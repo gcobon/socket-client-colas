@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #282828;
+    color: white;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.ticket-actual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #282828;
+}
+
+.ticket-actual-numero {
+    font-size: 6rem;
+}
+
+.ticket-actual-escritorio {
+    font-size: 4rem;
+}
+
+.ticket-secundario-numero {
+    font-size: 2.5rem;
+}
+
+.ticket-secundario-escritorio {
+  font-size: 1.5rem;
+}
+
+
+/* Nuevo-ticket */
+
+#lblNuevoTicket {
+    font-size: 190px;
+}
+
+.container-public {
+  width: 100%;
+  height: 100%;
+}
+
+.container-public .row{
+  height: 100%;
+}
+
+.panel-secundary{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+}
+
+
+/* .title{
+  margin-top: 2rem;
+} */

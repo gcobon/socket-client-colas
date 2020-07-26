@@ -1,0 +1,30 @@
+<div class="container-public">
+
+  <div class="row">
+    <div class="col-9 bg-dark ticket-actual">
+      <span class="ticket-actual-numero" *ngIf="!nextTicket">Bienvenido</span>
+
+      <span class="ticket-actual-numero" *ngIf="nextTicket">Ticket {{nextTicket.ticket}}</span>
+      <br>
+      <span class="ticket-actual-escritorio" *ngIf="nextTicket">Escritorio
+        {{nextTicket.desk}}</span>
+    </div>
+    <div class="col-3 panel-secundary bg-info">
+      <div *ngIf="previusTicket.length >= 4">
+        <span  class="ticket-secundario-numero">Ticket {{previusTicket[2].ticket}}</span>
+            <br>
+            <span class="ticket-secundario-escritorio">Escritorio {{previusTicket[2].desk}}</span>
+      </div>
+      <div *ngIf="previusTicket.length >= 3">
+        <span class="ticket-secundario-numero">Ticket {{previusTicket[1].ticket}}</span>
+            <br>
+            <span class="ticket-secundario-escritorio">Escritorio {{previusTicket[1].desk}}</span>
+      </div>
+      <div *ngIf="previusTicket.length >= 2">
+        <span class="ticket-secundario-numero">Ticket {{previusTicket[0].ticket}}</span>
+            <br>
+            <span class="ticket-secundario-escritorio">Escritorio {{previusTicket[0].desk}}</span>
+      </div>
+    </div>
+  </div>
+</div>

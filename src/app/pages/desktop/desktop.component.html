@@ -1,0 +1,10 @@
+<h1 class="mt-5" >Escritorio <span>{{desk}}</span></h1>
+<h4>Atendiendo a
+  <small *ngIf="!nextTicket">....</small>
+  <small *ngIf="nextTicket">{{nextTicket.ticket}}</small>
+</h4>
+<hr>
+
+<button class="btn btn-primary btn-lg" (click)="getNextTicket()">
+    Atender siguiente ticket
+</button>

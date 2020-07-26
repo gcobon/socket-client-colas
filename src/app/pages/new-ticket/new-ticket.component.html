@@ -1,0 +1,19 @@
+<table>
+  <tr>
+      <td>
+          <span id="lblNuevoTicket" *ngIf="!newTicket">
+              Bienvenido
+          </span>
+          <span id="lblNuevoTicket" *ngIf="newTicket">
+            {{newTicket.ticket}}
+          </span>
+      </td>
+  </tr>
+  <tr>
+      <td>
+          <button class="btn btn-primary btn-lg" (click)="generateTicket()">
+              Generar nuevo ticket
+          </button>
+      </td>
+  </tr>
+</table>
