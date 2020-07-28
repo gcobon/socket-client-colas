@@ -1,36 +1,41 @@
 import { Ticket } from './../interfaces/ticket';
-import { TicketService } from './../service/ticket.service';
 import { WebSocketService } from './../service/web-socket.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-public',
   templateUrl: './public.component.html',
   styleUrls: ['./public.component.css'],
 })
-export class PublicComponent implements OnInit {
+export class PublicComponent implements OnInit, OnDestroy {
   public nextTicket: Ticket;
   public previusTicket: Ticket[] = [];
+  private subscription: Subscription;
 
-  constructor(
-    private _wsService: WebSocketService
-  ) {}
+  constructor(private _wsService: WebSocketService) {}
 
   ngOnInit(): void {
-     const body = document.getElementsByTagName('body')[0];
-     body.classList.remove('container');
+    const body = document.getElementsByTagName('body')[0];
+    body.classList.remove('container');
     this.listenNextTicket();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   listenNextTicket() {
-    this._wsService.listen('ticket-public').subscribe((ticket: Ticket) => {
-      if (ticket) {
-        this.nextTicket = ticket;
-        console.log('listen-next-ticket');
-        this.pushPrevTicket(ticket);
-        this.putAudio(ticket);
-      }
-    });
+    this.subscription = this._wsService
+      .listen('ticket-public')
+      .subscribe((ticket: Ticket) => {
+        if (ticket) {
+          this.nextTicket = ticket;
+          console.log('listen-next-ticket');
+          this.pushPrevTicket(ticket);
+          this.putAudio(ticket);
+        }
+      });
   }
 
   pushPrevTicket(ticket: Ticket) {
