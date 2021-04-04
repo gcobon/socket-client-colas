@@ -4,7 +4,7 @@
 
 import { SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'https://app-colas-socket-io.herokuapp.com/', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {} };
 
 export const environment = {
   production: false,

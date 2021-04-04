@@ -15,14 +15,14 @@ export class DesktopComponent implements OnInit {
   public nextTicket:Ticket;
 
   constructor(
-    private _route: ActivatedRoute,
-    private _wsService:WebSocketService,
-    private _ticketService: TicketService
+    private route: ActivatedRoute,
+    private wsService:WebSocketService,
+    private ticketService: TicketService
     ) {}
 
   ngOnInit(): void {
     this.getDesk();
-    this._ticketService.listenNextTicket().subscribe(
+    this.ticketService.listenNextTicket().subscribe(
       (ticket: Ticket) => {
         this.nextTicket = ticket;
       }
@@ -30,12 +30,12 @@ export class DesktopComponent implements OnInit {
   }
 
   getDesk(){
-    this._route.params.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       this.desk = params.id;
     });
   }
 
   getNextTicket(){
-    this._wsService.emit('ticket-next', this.desk);
+    this.wsService.emit('ticket-next', this.desk);
   }
 }

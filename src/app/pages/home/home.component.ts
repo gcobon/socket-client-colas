@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private _router:Router
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   enter(value: number ):void{
     if(!value) return
-    this._router.navigate(['/desktop/', value]);
+    this.router.navigate(['/desktop/', value]);
   }
 
 }

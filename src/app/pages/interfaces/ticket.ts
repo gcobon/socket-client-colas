@@ -1,6 +1,6 @@
 export interface Ticket {
   id: number;
   ticket: string;
-  desk: number,
+  desk: number;
   attended: boolean;
 }

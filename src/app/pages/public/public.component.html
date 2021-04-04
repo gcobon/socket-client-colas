@@ -6,10 +6,10 @@
 
       <span class="ticket-actual-numero" *ngIf="nextTicket">Ticket {{nextTicket.ticket}}</span>
       <br>
-      <span class="ticket-actual-escritorio" *ngIf="nextTicket">Escritorio
+      <span class="ticket-actual-escritorio" *ngIf="nextTicket">Caja
         {{nextTicket.desk}}</span>
     </div>
-    <div class="col-3 panel-secundary bg-info">
+    <div class="col-3 panel-secundary bg-danger">
       <div *ngIf="previusTicket.length >= 4">
         <span  class="ticket-secundario-numero">Ticket {{previusTicket[2].ticket}}</span>
             <br>

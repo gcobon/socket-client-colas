@@ -12,11 +12,11 @@ export class NewTicketComponent implements OnInit {
   public newTicket: Ticket;
 
   constructor(
-    private _wsService:WebSocketService
+    private wsService:WebSocketService
   ) { }
 
   ngOnInit(): void {
-    this._wsService.listen('ticket-new').subscribe(
+    this.wsService.listen('ticket-new').subscribe(
       (ticket: Ticket) => {
         this.newTicket = ticket;
       }
@@ -24,6 +24,6 @@ export class NewTicketComponent implements OnInit {
   }
 
   generateTicket(){
-    this._wsService.emit('ticket-new');
+    this.wsService.emit('ticket-new');
   }
 }

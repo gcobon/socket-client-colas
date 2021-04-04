@@ -13,7 +13,7 @@ export class PublicComponent implements OnInit, OnDestroy {
   public previusTicket: Ticket[] = [];
   private subscription: Subscription;
 
-  constructor(private _wsService: WebSocketService) {}
+  constructor(private wsService: WebSocketService) {}
 
   ngOnInit(): void {
     const body = document.getElementsByTagName('body')[0];
@@ -26,7 +26,7 @@ export class PublicComponent implements OnInit, OnDestroy {
   }
 
   listenNextTicket() {
-    this.subscription = this._wsService
+    this.subscription = this.wsService
       .listen('ticket-public')
       .subscribe((ticket: Ticket) => {
         if (ticket) {
@@ -49,9 +49,15 @@ export class PublicComponent implements OnInit, OnDestroy {
   putAudio(ticket: Ticket) {
     let audio = new Audio('./../../../assets/audio/new-ticket.mp3');
     audio.load();
-    audio.play().then(() => {
-      let mensaje = `Turno del cliente, ${ticket.ticket} , pasar al escritorio ${ticket.desk}`;
-      speechSynthesis.speak(new SpeechSynthesisUtterance(mensaje));
-    });
+    audio
+      .play()
+      .then(() => {
+        let mensaje = `Turno del cliente, ${ticket.ticket} , pasar a caja, ${ticket.desk}`;
+        let utterance = new SpeechSynthesisUtterance(mensaje);
+        utterance.lang = 'es-GT';
+
+        speechSynthesis.speak(utterance);
+      })
+      .catch((err) => console.log(err));
   }
 }
